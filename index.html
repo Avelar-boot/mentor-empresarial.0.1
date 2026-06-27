@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mentor Empresarial AI</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background: radial-gradient(circle at top, #111827, #0b0f1a);
+color:white;
+}
+
+/* TELAS */
+.screen{
+display:none;
+padding:20px;
+max-width:900px;
+margin:auto;
+}
+
+.active{
+display:block;
+}
+
+/* CARD */
+.card{
+background: rgba(255,255,255,0.05);
+padding:20px;
+border-radius:14px;
+margin-top:15px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+/* INPUTS */
+input,button,select,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+border:none;
+box-sizing:border-box;
+}
+
+input,textarea,select{
+background:#111827;
+color:white;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+/* BOTÃO */
+button{
+background:#4f46e5;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* IA FLUTUANTE */
+#iaBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#4f46e5;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+cursor:pointer;
+}
+
+#iaBox{
+position:fixed;
+bottom:90px;
+right:20px;
+width:280px;
+background:#111827;
+padding:10px;
+border-radius:10px;
+display:none;
+border:1px solid rgba(255,255,255,0.2);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="screen active">
+<div class="card">
+<h2>🔐 Login</h2>
+
+<input id="email" placeholder="Email">
+<input id="senha" placeholder="Senha">
+
+<button onclick="entrar()">Entrar</button>
+
+<p id="msg"></p>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="screen">
+<div class="card">
+<h2>📊 Dashboard</h2>
+<p>Bem-vindo ao sistema</p>
+
+<button onclick="ir('testes')">Começar Testes</button>
+</div>
+</div>
+
+<!-- TESTES -->
+<div id="testes" class="screen">
+<div class="card">
+<h2>🧠 Testes Empreendedor</h2>
+
+<div id="quiz"></div>
+
+<button onclick="resultadoTeste()">Finalizar Teste</button>
+
+<div id="resTeste"></div>
+
+<button onclick="ir('empresa')">Ir para Empresa</button>
+</div>
+</div>
+
+<!-- EMPRESA -->
+<div id="empresa" class="screen">
+<div class="card">
+<h2>🏢 Criar Empresa</h2>
+
+<input id="empresaNome" placeholder="Nome da empresa">
+<input id="nicho" placeholder="Produto/Serviço">
+<input id="capital" placeholder="Capital inicial">
+
+<select id="modelo">
+<option>Online</option>
+<option>Física</option>
+<option>Híbrida</option>
+</select>
+
+<button onclick="salvarEmpresa()">Gerar Estratégia</button>
+
+<div id="resEmpresa"></div>
+
+<button onclick="ir('resultado')">Ver Resultado</button>
+</div>
+</div>
+
+<!-- RESULTADO -->
+<div id="resultado" class="screen">
+<div class="card">
+<h2>📈 Análise Final</h2>
+
+<div id="analise"></div>
+
+<button onclick="ir('dashboard')">Voltar</button>
+</div>
+</div>
+
+<!-- IA -->
+<div id="iaBtn" onclick="toggleIA()">🤖</div>
+
+<div id="iaBox">
+<input id="iaInput" placeholder="Pergunte algo...">
+<button onclick="ia()">Perguntar</button>
+<p id="iaRes"></p>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
